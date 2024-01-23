@@ -1,18 +1,18 @@
-package Lambda
+package main
 
 import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"main/processes"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/Knetic/govaluate"
 )
 
-func ProcessA() {
+func main() {
 	// Set your AWS region
-	region := "US East (N. Virginia) us-east-1"
+	region := "us-east-1"
 
 	// Initialize AWS SDK configuration
 	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion(region))
@@ -64,6 +64,33 @@ func ProcessA() {
 		}
 
 		// Call the processing algorithm
-		processes.ProcessA(fileData)
+		result := ProcessA(fileData)
+
+		// Write the result back to the same file
+		err = ioutil.WriteFile(fmt.Sprintf("/tmp/%s", *object.Key), []byte(result), 0644)
+		if err != nil {
+			fmt.Printf("Error writing result to file: %v\n", err)
+			return
+		}
 	}
+}
+
+func ProcessA(fileData []byte) string {
+	fmt.Print("Processing file type A:", string(fileData))
+
+	expression, err := govaluate.NewEvaluableExpression(string(fileData))
+	if err != nil {
+		fmt.Printf("Error creating expression: %v\n", err)
+		return ""
+	}
+	result, err := expression.Evaluate(nil)
+	if err != nil {
+		fmt.Printf("Error evaluating expression: %v\n", err)
+		return ""
+	}
+
+	resultString := fmt.Sprintf("Result of expression: %v\n\n", result)
+	fmt.Print(resultString)
+
+	return resultString
 }
