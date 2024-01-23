@@ -70,25 +70,24 @@ func main() {
 				processes.ProcessA(fileData)
 			}			
 		} else if (fileInfo.Name() == "Type B"){
-			// directory := `C:\Users\eduar\Desktop\Final Project\mockfiles\Type B`
+			directory := `C:\Users\eduar\Desktop\Final Project\mockfiles\Type B`
 
-			// files, err := ioutil.ReadDir(directory)
-			// if err != nil {
-			// 	log.Fatal("Error reading directory:", err)
-			// 	return
-			// }
+			files, err := ioutil.ReadDir(directory)
+			if err != nil {
+				log.Fatal("Error reading directory:", err)
+				return
+			}
 
-			// for _, fileInfo := range files {
-			// 	filePath := filepath.Join(directory, fileInfo.Name())
+			for _, fileInfo := range files {
+				filePath := filepath.Join(directory, fileInfo.Name())
 
-			// 	fileData, err := ioutil.ReadFile(filePath)
-			// 	if err != nil {
-			// 		fmt.Printf("Error reading file %s: %v\n", fileInfo.Name(), err)
-			// 		continue
-			// 	}
-			// 	processes.ProcessB(fileData)
-			// }
-			fmt.Println("Found!")			
+				fileData, err := ioutil.ReadFile(filePath)
+				if err != nil {
+					fmt.Printf("Error reading file %s: %v\n", fileInfo.Name(), err)
+					continue
+				}
+				processes.ProcessB(fileData)
+			}		
 		} else if (fileInfo.Name() == "Type C"){
 			directory := `C:\Users\eduar\Desktop\Final Project\mockfiles\Type C`
 
