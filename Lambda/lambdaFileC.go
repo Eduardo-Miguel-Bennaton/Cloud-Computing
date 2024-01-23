@@ -11,7 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func ProcessA() {
+func ProcessC() {
 	// Set your AWS region
 	region := "US East (N. Virginia) us-east-1"
 
@@ -27,7 +27,7 @@ func ProcessA() {
 
 	// Specify your S3 bucket and folder
 	bucket := "awscloudfinalproject2024"
-	folder := "Type A/"
+	folder := "Type C/"
 
 	// List objects in the specified folder
 	listInput := &s3.ListObjectsV2Input{
@@ -65,6 +65,6 @@ func ProcessA() {
 		}
 
 		// Call the processing algorithm
-		processes.ProcessA(fileData)
+		processes.ProcessC(fileData)
 	}
 }
