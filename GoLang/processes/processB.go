@@ -6,13 +6,17 @@ import (
 )
 
 func ProcessB(fileData []byte) {
-	fmt.Print("Processing file type A:", string(fileData))
+	// Reverse the string
+	reversedString := reverseString(string(fileData))
+	fmt.Printf("Processing file type B. Original string: %s, Reversed string: %s\n", string(fileData), reversedString)
 
-	expression, err := govaluate.NewEvaluableExpression(string(fileData))
+	// Pass the reversed string to govaluate
+	expression, err := govaluate.NewEvaluableExpression(reversedString)
 	if err != nil {
 		fmt.Printf("Error creating expression: %v\n", err)
 		return
 	}
+
 	result, err := expression.Evaluate(nil)
 	if err != nil {
 		fmt.Printf("Error evaluating expression: %v\n", err)
@@ -20,4 +24,13 @@ func ProcessB(fileData []byte) {
 	}
 
 	fmt.Printf("Result of expression: %v\n\n", result)
+}
+
+// reverseString reverses a string
+func reverseString(s string) string {
+	runes := []rune(s)
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }
