@@ -1,4 +1,3 @@
-// processes/processA.go
 package Lambda
 
 import (
