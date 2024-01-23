@@ -1,0 +1,50 @@
+1. Upload Files to S3 (Python)
+
+Create a Python script that can connect to an S3 bucket and upload files to it.
+Use the boto3 library to interact with the S3 API.
+Implement logic to handle multiple files and upload them to the appropriate directories within the S3 bucket.
+
+
+2. Implement Processing Algorithms for Local Processing (GoLang)
+
+Develop GoLang functions that implement the processing algorithms for each file type (A, B, C).
+Each function should take the file data as input and perform the required processing.
+Test the processing algorithms locally with sample files to ensure they work correctly.
+
+
+3. Create Worker Lambda Functions (GoLang)
+
+Create separate Lambda functions for each file type (A, B, C).
+Each Lambda function should be written in GoLang and contain the corresponding processing algorithm.
+Implement logic in the Lambda function to fetch the file data from S3 and pass it to the processing algorithm.
+Write the processed results back to S3.
+
+
+4. Master Lambda Function (MasterLambda)
+
+Create a master Lambda function that orchestrates the execution of worker Lambda functions.
+Implement logic to retrieve the list of uploaded files from S3.
+Analyze the file types and determine which worker Lambda function should process each file.
+Spawn new worker Lambda functions for each file type and pass the corresponding file data.
+Monitor the execution status of worker Lambda functions and handle potential errors.
+
+
+5. Concurrent and Parallel Execution of Lambdas
+
+Leverage AWS Lambda's concurrency features to execute multiple worker Lambda functions in parallel.
+Use Lambda's asynchronous nature to handle multiple file processing tasks simultaneously.
+Implement mechanisms to ensure that workers receive distinct file data and avoid conflicts.
+
+
+6. Write Results to S3
+
+Implement logic in the worker Lambda functions to write the processed results back to S3.
+Use unique file names to store the processed results and avoid conflicts.
+Ensure that the results are written to a designated directory within the S3 bucket.
+
+
+7. Save Logs from Lambda
+
+Configure each Lambda function to capture and store logs.
+Use AWS CloudWatch Logs to centralize and manage the logs from all Lambda functions.
+Implement filtering and aggregation techniques to analyze log data for debugging and performance monitoring.
