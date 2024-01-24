@@ -1,7 +1,7 @@
 import os
 import random
 
-base_directory = r'C:\Users\eduar\Desktop\Final Project\mockfiles'
+base_directory = r'.\mockfiles'
 
 def create_directory(directory):
     if not os.path.exists(directory):
