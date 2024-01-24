@@ -59,31 +59,23 @@ def write_to_file(file_path, content):
 def generate_all_test_cases(n_files_per_type):
     create_directory(base_directory)  # Ensure base directory exists
 
-    # Create directories for each file type
-    type_a_dir = os.path.join(base_directory, 'Type A')
-    type_b_dir = os.path.join(base_directory, 'Type B')
-    type_c_dir = os.path.join(base_directory, 'Type C')
-    create_directory(type_a_dir)
-    create_directory(type_b_dir)
-    create_directory(type_c_dir)
-
     for i in range(1, n_files_per_type + 1):
         # Generate and write Type A content
         a_content = generate_files(1, 'Type A')
-        a_file_path = os.path.join(type_a_dir, f"TypeAfile{i}.txt")
+        a_file_path = os.path.join(base_directory, f"TypeAfile{i}.txt")
         write_to_file(a_file_path, a_content)
 
         # Generate and write Type B content
         b_content = generate_files(1, 'Type B')
-        b_file_path = os.path.join(type_b_dir, f"TypeBfile{i}.txt")
+        b_file_path = os.path.join(base_directory, f"TypeBfile{i}.txt")
         write_to_file(b_file_path, b_content)
 
         # Generate and write Type C content
         c_content = generate_files(1, 'Type C')
-        c_file_path = os.path.join(type_c_dir, f"TypeCfile{i}.txt")
+        c_file_path = os.path.join(base_directory, f"TypeCfile{i}.txt")
         write_to_file(c_file_path, c_content)
 
     print("All files have been generated successfully.")
 
 # Generate 100 files for each type A, B, and C
-generate_all_test_cases(100)
+generate_all_test_cases(33)
