@@ -10,7 +10,7 @@ def create_directory(directory):
         os.makedirs(directory)
 
 # Predefined list of common words
-common_words = ["dog", "cat", "cow", "bird", "fish", "tree", "car", "house", "boat", "bike"]
+common_words = ["dog", "cat", "cow", "bird", "fish", "tree", "car", "house", "boat", "bike", "sun", "moon", "star", "book", "pen", "computer", "ocean", "mountain", "flower", "rain", "cloud", "music", "phone", "shoe", "friend", "sky"]
 
 # Functions to generate content for each file type
 def generate_type_a(n):
