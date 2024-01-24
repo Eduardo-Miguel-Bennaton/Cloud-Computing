@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"main/processes"
 	"os"
 	"path/filepath"
-	"main/processes"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -27,21 +28,18 @@ func main() {
 		newFilePathC := filepath.Join(directory, "Type C", fileName)
 
 		if strings.HasPrefix(fileName, "TypeA") {
-			fmt.Printf("%s belongs to Type A\n", fileName)
 			os.MkdirAll(filepath.Join(directory, "Type A"), os.ModePerm)
 			err := os.Rename(filepath.Join(directory, fileName), newFilePathA)
 			if err != nil {
 				fmt.Printf("Error moving file %s: %v\n", fileName, err)
 			}
 		} else if strings.HasPrefix(fileName, "TypeB") {
-			fmt.Printf("%s belongs to Type B\n", fileName)
 			os.MkdirAll(filepath.Join(directory, "Type B"), os.ModePerm)
 			err := os.Rename(filepath.Join(directory, fileName), newFilePathB)
 			if err != nil {
 				fmt.Printf("Error moving file %s: %v\n", fileName, err)
 			}
 		} else if strings.HasPrefix(fileName, "TypeC") {
-			fmt.Printf("%s belongs to Type C\n", fileName)
 			os.MkdirAll(filepath.Join(directory, "Type C"), os.ModePerm)
 			err := os.Rename(filepath.Join(directory, fileName), newFilePathC)
 			if err != nil {
@@ -50,6 +48,19 @@ func main() {
 		} else {
 			fmt.Printf("%s does not match any known type\n", fileName)
 		}
+	}
+
+	fmt.Println("Files are now re-organized according to their category") 
+	time.Sleep(500 * time.Millisecond)
+
+	files, err = ioutil.ReadDir(directory)
+	if err != nil {
+		log.Fatal("Error reading directory:", err)
+		return
+	}
+
+	for _, fileInfo := range files {
+		fileName := fileInfo.Name()
 
 		if strings.HasPrefix(fileName, "Type A") {
 			subDirectory := filepath.Join(directory, "Type A")

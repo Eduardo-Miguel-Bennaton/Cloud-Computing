@@ -1,18 +1,14 @@
 import os
 import random
 
-# Define the base directory where the test files will be saved
 base_directory = r'C:\Users\eduar\Desktop\Final Project\mockfiles'
 
-# Function to ensure the directory exists
 def create_directory(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-# Predefined list of common words
 common_words = ["dog", "cat", "cow", "bird", "fish", "tree", "car", "house", "boat", "bike", "sun", "moon", "star", "book", "pen", "computer", "ocean", "mountain", "flower", "rain", "cloud", "music", "phone", "shoe", "friend", "sky"]
 
-# Functions to generate content for each file type
 def generate_type_a(n):
     equations = []
     for _ in range(n):
@@ -39,7 +35,6 @@ def generate_type_c(n):
         ascii_characters.append(ascii_character)
     return ascii_characters
 
-# Function to call the appropriate content generator based on file type
 def generate_files(n_files, file_type):
     if file_type == 'Type A':
         return generate_type_a(n_files)
@@ -50,32 +45,27 @@ def generate_files(n_files, file_type):
     else:
         raise ValueError(f"Invalid file type: '{file_type}'")
 
-# Function to write content to a file
 def write_to_file(file_path, content):
     with open(file_path, 'w') as file:
         file.writelines(content)
 
-# Main function to generate the specified number of files for each file type
 def generate_all_test_cases(n_files_per_type):
-    create_directory(base_directory)  # Ensure base directory exists
+    create_directory(base_directory)
 
     for i in range(1, n_files_per_type + 1):
-        # Generate and write Type A content
+
         a_content = generate_files(1, 'Type A')
         a_file_path = os.path.join(base_directory, f"TypeAfile{i}.txt")
         write_to_file(a_file_path, a_content)
 
-        # Generate and write Type B content
         b_content = generate_files(1, 'Type B')
         b_file_path = os.path.join(base_directory, f"TypeBfile{i}.txt")
         write_to_file(b_file_path, b_content)
 
-        # Generate and write Type C content
         c_content = generate_files(1, 'Type C')
         c_file_path = os.path.join(base_directory, f"TypeCfile{i}.txt")
         write_to_file(c_file_path, c_content)
 
     print("All files have been generated successfully.")
 
-# Generate 100 files for each type A, B, and C
 generate_all_test_cases(33)
