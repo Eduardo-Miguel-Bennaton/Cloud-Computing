@@ -3,8 +3,8 @@ import boto3
 
 s3 = boto3.client('s3')
 
-files_path = r'.\mockfiles'
-bucket_name = 'awscloudfinalproject2024'
+files_path = r'./mockfiles'
+# bucket_name = 'awsexample' # Replace with your bucket name
 
 def upload_file_to_s3(file_path, bucket_name, file_key):
     with open(file_path, 'rb') as f:
@@ -21,4 +21,4 @@ def upload_folders_to_s3(base_path, bucket_name):
 
             upload_file_to_s3(file_path, bucket_name, s3_file_key)
 
-upload_folders_to_s3(files_path, bucket_name)
+# upload_folders_to_s3(files_path, bucket_name) || Correct way to call the function with correct bucket name
