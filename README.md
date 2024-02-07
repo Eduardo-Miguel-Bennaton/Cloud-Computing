@@ -18,3 +18,5 @@ https://github.com/Eduardo-Miguel-Bennaton/Cloud-Computing.git
 
 <br>
 <h2>Visuals</h2>
+
+<img width="778" alt="image" src="https://github.com/Eduardo-Miguel-Bennaton/Cloud-Computing/assets/122058309/6dbc01ca-ddfa-457e-89ed-33297d471ef2">
