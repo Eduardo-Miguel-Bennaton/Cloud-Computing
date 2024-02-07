@@ -9,6 +9,7 @@ Cheers👋
 ```markdown
 https://github.com/Eduardo-Miguel-Bennaton/Cloud-Computing.git
 ```
-
 2. Open the repository and run it with live server
 3. Let the code run!
+
+<h2>Visuals</h2>
